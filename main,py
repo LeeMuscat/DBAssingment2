@@ -74,6 +74,10 @@ class Booking(BaseModel):
     ticket_type: str
     quantity: int
 
+@app.get("/")
+def root():
+    return {"status": "ok", "message": "API running. Visit /docs"}
+
 
 @app.post("/events")
 async def create_event(event: Event):
@@ -274,3 +278,4 @@ async def get_promo_video(event_id: str):
 @app.get("/venue_photo/{venue_id}")
 async def get_venue_photo(venue_id: str):
     return await stream_latest_media(db.media, "venue_id", venue_id, "venue_photo")
+
