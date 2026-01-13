@@ -74,6 +74,10 @@ class Booking(BaseModel):
     ticket_type: str
     quantity: int
 
+@app.get("/")
+def root():
+    return {"status": "ok", "message": "API running. Visit /docs"}
+
 
 @app.post("/events")
 async def create_event(event: Event):
